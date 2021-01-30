@@ -2,6 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//this might be real nasty but I'm going to make a data class to pass back all of the 
+/*public class ArmData
+{
+    private Vector2 currentPos;
+    private Vector2 nextRetractPos;
+    private List<Vector2> armPositions;
+    private List<GameObject> armPieces;
+
+    public ArmData(Vector2 _currentPos, Vector2 _nextRetractPos, List<Vector2> _armPositions, List<GameObject> _armPieces)
+    {
+    currentPos = _currentPos;
+    nextRetractPos = _nextRetractPos;
+    armPositions = _armPositions;
+    armPieces = _armPieces;
+    }
+
+    public Vector2 CurrentPos { get => currentPos; set => currentPos = value; }
+    public Vector2 NextRetractPos { get => nextRetractPos; set => nextRetractPos = value; }
+    public List<Vector2> ArmPositions { get => armPositions; set => armPositions = value; }
+    public List<GameObject> ArmPieces { get => armPieces; set => armPieces = value; }
+}*/
+
+
 public class Arm : MonoBehaviour
 {
     private Vector2 currentPos;
@@ -11,6 +34,7 @@ public class Arm : MonoBehaviour
     private float timer;
     private Vector3 mousePosition;
 
+    public GameObject SceneLoader;
     public float moreArmDistance = 0.1f;
     public GameObject armPiece;
     public float snapbackAccuracyDist = 0.5f;
@@ -27,14 +51,17 @@ public class Arm : MonoBehaviour
     void FixedUpdate()
     {
         timer = Time.deltaTime * snapbackSpeed;
-
-        if (Input.GetMouseButton(0))
+        //rather than bopping between scenes were just going to keep it all loaded and move the camera. 
+        if (SceneLoader.GetComponent<SceneLoader>().InMainScene)
         {
-            Stretch();
-        }
-        else
-        {
-            Retract();
+            if (Input.GetMouseButton(0))
+            {
+                Stretch();
+            }
+            else
+            {
+                Retract();
+            }
         }
     }
 
@@ -124,7 +151,20 @@ public class Arm : MonoBehaviour
         a.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); ;
     }
 
+   /* public void LoadArmData(ArmData armData)
+    {
+        //when returning to the main scene load back in all of the arm data
+        currentPos = armData.CurrentPos;
+        nextRetractPos = armData.NextRetractPos;
+        armPositions = armData.ArmPositions;
+        armPieces = armData.ArmPieces;
+        // maybe set something else as well?
+    }
 
+    public ArmData GetArmData()
+    {
+        return new ArmData(currentPos, nextRetractPos, armPositions, armPieces);
+    }*/
     private bool ArmMoved()
     {
         //get the distance between the arms movement a tick ago and its current position

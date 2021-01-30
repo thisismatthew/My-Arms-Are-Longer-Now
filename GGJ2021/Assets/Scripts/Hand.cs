@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     public GameObject item;
+    public GameObject SceneLoader;
     private bool touchingItem;
     private bool itemHeld;
     private Vector3 mousePosition;
@@ -12,23 +13,28 @@ public class Hand : MonoBehaviour
 
     void FixedUpdate()
     {
-        mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
+        if (!SceneLoader.GetComponent<SceneLoader>().InMainScene)
+        {
+            mousePosition = Input.mousePosition;
+            mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
+        }
     }
 
     private void Update()
     {
-        if (touchingItem && Input.GetMouseButtonDown(0))
+        if (!SceneLoader.GetComponent<SceneLoader>().InMainScene)
         {
-            item.transform.parent = transform;
-            itemHeld = true;
+            if (touchingItem && Input.GetMouseButtonDown(0))
+            {
+                item.transform.parent = transform;
+                itemHeld = true;
+            }
+            if (itemHeld && Input.GetMouseButtonUp(0))
+            {
+                item.transform.parent = null;
+            }
         }
-        if (itemHeld && Input.GetMouseButtonUp(0))
-        {
-            item.transform.parent = null;
-        }
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)

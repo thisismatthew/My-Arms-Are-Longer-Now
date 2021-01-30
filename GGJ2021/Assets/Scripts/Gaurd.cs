@@ -8,6 +8,7 @@ public class Gaurd : MonoBehaviour
     public float moveSpeed = 0.2f;
     public GameObject armObsticle;
     public float discoverRadius = 0.1f;
+    public GameObject SceneLoader;
     private float timer;
     private Vector2 currentMoveTarget;
     private static Vector2 startPosition;
@@ -22,16 +23,19 @@ public class Gaurd : MonoBehaviour
     void Update()
     {
         timer = Time.deltaTime * moveSpeed;
-        //if the gaurd is not close to the target
-        if (Vector2.Distance(transform.position, currentMoveTarget) > discoverRadius)
+        if (SceneLoader.GetComponent<SceneLoader>().InMainScene)
         {
-            //lerp to it
-            this.GetComponent<Rigidbody2D>().MovePosition(Vector2.Lerp(transform.position, currentMoveTarget, timer));
-        }
-        else
-        {
-            timer = 0;
-            currentMoveTarget = getRandomPoint();
+            //if the gaurd is not close to the target
+            if (Vector2.Distance(transform.position, currentMoveTarget) > discoverRadius)
+            {
+                //lerp to it
+                this.GetComponent<Rigidbody2D>().MovePosition(Vector2.Lerp(transform.position, currentMoveTarget, timer));
+            }
+            else
+            {
+                timer = 0;
+                currentMoveTarget = getRandomPoint();
+            }
         }
     }
 
