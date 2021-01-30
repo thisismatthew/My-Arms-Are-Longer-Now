@@ -12,19 +12,14 @@ public class ItemBoundry : MonoBehaviour
     {
         startPos = item.transform.position;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Item")
         {
+            //cut back to the main scene
             SceneLoader.GetComponent<SceneLoader>().CutBackToMainScene();
+            //put the money back in place
             collision.transform.position = startPos;
         }
     }
