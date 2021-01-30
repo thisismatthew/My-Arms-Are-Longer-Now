@@ -5,9 +5,12 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
     public GameObject item;
+    public GameObject pinchPoint;
     public GameObject SceneLoader;
+    public Sprite pinch_img;
+    public Sprite open_img;
     private bool touchingItem;
-    private bool itemHeld;
+    public bool itemHeld;
     private Vector3 mousePosition;
     public float moveSpeed = 0.1f;
 
@@ -28,14 +31,23 @@ public class Hand : MonoBehaviour
         {
             if (touchingItem && Input.GetMouseButtonDown(0))
             {
-                item.transform.parent = transform;
+                GetComponentInChildren<SpriteRenderer>().sprite = pinch_img;
                 itemHeld = true;
             }
             if (itemHeld && Input.GetMouseButtonUp(0))
             {
+                GetComponentInChildren<SpriteRenderer>().sprite = open_img;
                 item.transform.parent = null;
+                itemHeld = false;
+            }
+            if (itemHeld)
+            {
+                item.GetComponent<Rigidbody2D>().MovePosition(pinchPoint.transform.position);
+                item.transform.position = pinchPoint.transform.position;
             }
         }
+
+
 
         //i wanted to do this with colliders and 
     }
@@ -44,6 +56,7 @@ public class Hand : MonoBehaviour
     {
         if(other.gameObject.tag == "Item")
         {
+            GetComponentInChildren<SpriteRenderer>().sprite = open_img;
             touchingItem = true;
         }
     }

@@ -7,6 +7,11 @@ public class SceneLoader : MonoBehaviour
     public bool InMainScene = true;
     public GameObject cam;
 
+    void Start()
+    {
+        FindObjectOfType<AudioManager>().Play("music");
+    }
+
     public void CutToMiniGame()
     {
         //freeze the main scene functions
