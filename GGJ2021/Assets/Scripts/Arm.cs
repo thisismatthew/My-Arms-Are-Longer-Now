@@ -2,28 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//this might be real nasty but I'm going to make a data class to pass back all of the 
-/*public class ArmData
-{
-    private Vector2 currentPos;
-    private Vector2 nextRetractPos;
-    private List<Vector2> armPositions;
-    private List<GameObject> armPieces;
-
-    public ArmData(Vector2 _currentPos, Vector2 _nextRetractPos, List<Vector2> _armPositions, List<GameObject> _armPieces)
-    {
-    currentPos = _currentPos;
-    nextRetractPos = _nextRetractPos;
-    armPositions = _armPositions;
-    armPieces = _armPieces;
-    }
-
-    public Vector2 CurrentPos { get => currentPos; set => currentPos = value; }
-    public Vector2 NextRetractPos { get => nextRetractPos; set => nextRetractPos = value; }
-    public List<Vector2> ArmPositions { get => armPositions; set => armPositions = value; }
-    public List<GameObject> ArmPieces { get => armPieces; set => armPieces = value; }
-}*/
-
 
 public class Arm : MonoBehaviour
 {
@@ -151,20 +129,7 @@ public class Arm : MonoBehaviour
         a.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); ;
     }
 
-   /* public void LoadArmData(ArmData armData)
-    {
-        //when returning to the main scene load back in all of the arm data
-        currentPos = armData.CurrentPos;
-        nextRetractPos = armData.NextRetractPos;
-        armPositions = armData.ArmPositions;
-        armPieces = armData.ArmPieces;
-        // maybe set something else as well?
-    }
-
-    public ArmData GetArmData()
-    {
-        return new ArmData(currentPos, nextRetractPos, armPositions, armPieces);
-    }*/
+  
     private bool ArmMoved()
     {
         //get the distance between the arms movement a tick ago and its current position

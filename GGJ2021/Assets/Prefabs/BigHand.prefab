@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4054273385055059349}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.11401764, w: 0.9934787}
+  m_LocalPosition: {x: 0, y: -0.0000002606921, z: 0}
+  m_LocalScale: {x: 0.48831192, y: 0.45352644, z: 0.45352644}
   m_Children: []
   m_Father: {fileID: 4054273385190913263}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -13.094}
 --- !u!212 &4054273385055059347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -1883261577
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b1a87f82d8defca4ea1ae725fa020b96, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 55bcbbdca7a6c864c971df598a1d20d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
+  SceneLoader: {fileID: 0}
   moveSpeed: 0.1
 --- !u!50 &4054273385190913260
 Rigidbody2D:

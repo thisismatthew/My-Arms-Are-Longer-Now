@@ -35,6 +35,8 @@ public class Hand : MonoBehaviour
                 item.transform.parent = null;
             }
         }
+
+        //i wanted to do this with colliders and 
     }
 
     private void OnTriggerEnter2D(Collider2D other)

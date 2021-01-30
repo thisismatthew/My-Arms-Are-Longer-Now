@@ -12,7 +12,7 @@ public class SceneLoader : MonoBehaviour
         //freeze the main scene functions
         InMainScene = false;
         //move camera to minigame coords
-        cam.transform.position = new Vector3(25f, 0f, -10f);
+        cam.transform.position = new Vector3(40f, 0f, -10f);
     }
 
     public void CutBackToMainScene()
