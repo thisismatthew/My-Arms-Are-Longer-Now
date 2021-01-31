@@ -61,9 +61,4 @@ public class Gaurd : MonoBehaviour
 
     }
 
-    private void OnCollision2D(Collider2D collision)
-    {
-        Debug.Log(collision.name);
-        
-    }
 }

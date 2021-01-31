@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     // This is Brackeys Audio Manager system with some small tweaks. 
     void Awake()
     {
+        DontDestroyOnLoad(transform.gameObject);
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -18,6 +19,11 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+    }
+
+    void Start()
+    {
+        FindObjectOfType<AudioManager>().Play("music");
     }
 
     // Update is called once per frame

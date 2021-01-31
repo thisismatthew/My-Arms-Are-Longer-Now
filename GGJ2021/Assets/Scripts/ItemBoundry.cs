@@ -29,6 +29,7 @@ public class ItemBoundry : MonoBehaviour
             item.GetComponent<Rigidbody2D>().MovePosition(startPos);
             collision.transform.position = startPos;
             macroHand.GetComponent<Arm>().hasMoney = true;
+            FindObjectOfType<AudioManager>().Play("retract");
             //cut back to the main scene
             SceneLoader.GetComponent<SceneLoader>().CutBackToMainScene();
 

@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour
 
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("music");
+        FindObjectOfType<AudioManager>().Play("bank");
     }
 
     public void CutToMiniGame()

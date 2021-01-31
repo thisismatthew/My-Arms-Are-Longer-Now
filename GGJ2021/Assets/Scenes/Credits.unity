@@ -182,7 +182,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a38bc5ea97bb3cd408235ff3086de539, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e11b42c172c2cf043a563d4734d8a1ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101961603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.13, z: 0}
+  m_LocalPosition: {x: -0.03, y: 0.96, z: 0}
   m_LocalScale: {x: 0.59599704, y: 0.59599704, z: 0.59599704}
   m_Children: []
   m_Father: {fileID: 0}
@@ -221,9 +221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimit: 4
   soundTimeLimit: 0
-  nextSceneTitle: IntroThree
-  gameEnd: 0
-  soundName: 
+  nextSceneTitle: TitleCard
+  gameEnd: 1
+  soundName: goodbye
 --- !u!114 &101961607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,10 +233,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 101961603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f71afcf798090a4798d79b2fcdd8c4d, type: 3}
+  m_Script: {fileID: 11500000, guid: ab6ac59e29ba85743b53e25badc22eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: IntroThree
 --- !u!1 &1694405553
 GameObject:
   m_ObjectHideFlags: 0

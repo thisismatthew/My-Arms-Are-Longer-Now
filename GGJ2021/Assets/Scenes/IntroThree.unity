@@ -182,7 +182,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a38bc5ea97bb3cd408235ff3086de539, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f720d99451aa1549a7cb4532e7c4eb4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLimit: 4
-  soundTimeLimit: 0
-  nextSceneTitle: IntroThree
+  soundTimeLimit: 2
+  nextSceneTitle: Game
   gameEnd: 0
   soundName: 
 --- !u!114 &101961607
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f71afcf798090a4798d79b2fcdd8c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: IntroThree
+  nextScene: Game
 --- !u!1 &1694405553
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,12 @@ public class Arm : MonoBehaviour
     public Sprite reaching_hand;
     public Sprite returning_hand;
 
+    private bool stretching = false;
+    private bool retracting = false;
+
+
+
+
     private void Start()
     {
         currentPos = this.transform.position;
@@ -42,10 +48,21 @@ public class Arm : MonoBehaviour
                 GetComponentInChildren<SpriteRenderer>().sprite = reaching_hand;
                 if (Input.GetMouseButton(0))
                 {
+                    if (!stretching)
+                    {
+                        FindObjectOfType<AudioManager>().Play("stretch");
+                        stretching = true;
+                    }
                     Stretch();
                 }
                 else
                 {
+                    if (!retracting)
+                    {
+                        FindObjectOfType<AudioManager>().Play("retract");
+                        retracting = true;
+                        stretching = false;
+                    }
                     retractStartPos = transform.position;
                     Retract();
                 }
@@ -129,6 +146,14 @@ public class Arm : MonoBehaviour
                 hasMoney = false;
                 //reduce debt amount by $10
                 debt.GetComponent<Debt>().DebtValue -= 10;
+            }
+
+            if (armPositions.Count == 1 && retracting)
+            {
+                retracting = false;
+                FindObjectOfType<AudioManager>().Stop("stretch");
+                FindObjectOfType<AudioManager>().Stop("retract");
+
             }
 
         }

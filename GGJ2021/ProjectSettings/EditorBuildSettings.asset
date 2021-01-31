@@ -9,9 +9,24 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Prototype Arm.unity
+    path: Assets/Scenes/TitleCard.unity
+    guid: 03e17706f52f1c0439085c15dcc2f33a
+  - enabled: 1
+    path: Assets/Scenes/IntroOne.unity
+    guid: 5fa065e44af63214daa0323cf83cd7ef
+  - enabled: 1
+    path: Assets/Scenes/IntroTwo.unity
+    guid: 092aaf4fefea8084397b4e555c8f8c89
+  - enabled: 1
+    path: Assets/Scenes/IntroThree.unity
+    guid: 6e045c1d562ed49499b275b4a903084a
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
     guid: 533f9601559ff3c4497c338efd8b4845
   - enabled: 1
-    path: Assets/Scenes/Pickpocket.unity
-    guid: a32bdd05fb043d745857862451f4e4f9
+    path: Assets/Scenes/GameOver.unity
+    guid: 8d9cf7dbde81fd54eba74b6af4f61e5b
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 5b4985aa5d4869d459eae7d7fbe6aa7f
   m_configObjects: {}

@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 101961605}
   - component: {fileID: 101961604}
   - component: {fileID: 101961606}
+  - component: {fileID: 101961607}
   m_Layer: 0
   m_Name: intro_card_one
   m_TagString: Untagged
@@ -200,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101961603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 1.35, z: 0}
+  m_LocalPosition: {x: -0.03, y: -0.03, z: 0}
   m_LocalScale: {x: 0.59599704, y: 0.59599704, z: 0.59599704}
   m_Children: []
   m_Father: {fileID: 0}
@@ -218,8 +219,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a142758b418974f9b5bfd23b6e4e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 10
-  nextSceneTitle: 
+  timeLimit: 4
+  soundTimeLimit: 3.3
+  nextSceneTitle: IntroTwo
+  gameEnd: 0
+  soundName: 
+--- !u!114 &101961607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101961603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f71afcf798090a4798d79b2fcdd8c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: IntroTwo
 --- !u!1 &1694405553
 GameObject:
   m_ObjectHideFlags: 0

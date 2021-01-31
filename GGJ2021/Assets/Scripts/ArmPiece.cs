@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ArmPiece : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class ArmPiece : MonoBehaviour
     {
         if(collision.gameObject.tag == "gaurd")
         {
-            Debug.Log("caught");
+            FindObjectOfType<AudioManager>().Stop("stretch");
+            FindObjectOfType<AudioManager>().Stop("retract");
+
+            FindObjectOfType<AudioManager>().Play("gameover");
+            SceneManager.LoadScene("GameOver");
             //triggerGameover
         }
     }
