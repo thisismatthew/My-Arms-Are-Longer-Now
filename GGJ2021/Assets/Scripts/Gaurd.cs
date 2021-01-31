@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class Gaurd : MonoBehaviour
 {
-    public float wanderRadius = 0.5f;
+    
     public float moveSpeed = 0.2f;
     public GameObject armObsticle;
+    public GameObject hand;
     public float discoverRadius = 0.1f;
     public GameObject SceneLoader;
     private float timer;
-    private Vector2 currentMoveTarget;
+    public int currentNode;
     private static Vector2 startPosition;
+    public List<GameObject> nodes = new List<GameObject>(); 
 
     private void Start()
     {
-        startPosition = this.transform.position;
-        currentMoveTarget = getRandomPoint();
+        startPosition = nodes[1].transform.position;
+        currentNode = 0;
     }
 
     // Update is called once per frame
@@ -26,27 +28,42 @@ public class Gaurd : MonoBehaviour
         if (SceneLoader.GetComponent<SceneLoader>().InMainScene)
         {
             //if the gaurd is not close to the target
-            if (Vector2.Distance(transform.position, currentMoveTarget) > discoverRadius)
+            if (Vector2.Distance(transform.position, nodes[currentNode].transform.position) > discoverRadius)
             {
                 //lerp to it
-                this.GetComponent<Rigidbody2D>().MovePosition(Vector2.Lerp(transform.position, currentMoveTarget, timer));
+                this.GetComponent<Rigidbody2D>().MovePosition(Vector2.Lerp(transform.position, nodes[currentNode].transform.position, timer));
             }
             else
             {
                 timer = 0;
-                currentMoveTarget = getRandomPoint();
+                if (currentNode == nodes.Count - 1)
+                {
+                    nodes.Reverse();
+                    currentNode = 0;
+                }
+                else
+                {
+                    currentNode++;
+                }
             }
         }
+
+        //sprite flipping
+        if (transform.position.x < nodes[currentNode].transform.position.x)
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
+            
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollision2D(Collider2D collision)
     {
-        Debug.Log("You're in trouble");
-    }
-
-    private Vector2 getRandomPoint()
-    {
-        //this should mean that the gaurd does not wander outside the given radius centered on the start position;
-        return startPosition + (Random.insideUnitCircle * wanderRadius);
+        Debug.Log(collision.name);
+        
     }
 }

@@ -13,6 +13,7 @@ public class Arm : MonoBehaviour
     private float timer;
     private Vector3 mousePosition;
 
+    public GameObject debt;
     public bool hasMoney = false;
     public GameObject SceneLoader;
     public float moreArmDistance = 0.1f;
@@ -58,6 +59,17 @@ public class Arm : MonoBehaviour
             }
 
         }
+
+        //sprite flipping
+        if (transform.position.x < mousePosition.x)
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
+
     }
 
     private void Stretch()
@@ -116,6 +128,7 @@ public class Arm : MonoBehaviour
                 GetComponentInChildren<SpriteRenderer>().sprite = reaching_hand;
                 hasMoney = false;
                 //reduce debt amount by $10
+                debt.GetComponent<Debt>().DebtValue -= 10;
             }
 
         }
