@@ -6,18 +6,22 @@ using UnityEngine;
 public class Arm : MonoBehaviour
 {
     private Vector2 currentPos;
+    private Vector2 retractStartPos;
     private Vector2 nextRetractPos;
     private List<Vector2> armPositions = new List<Vector2>();
     private List<GameObject> armPieces = new List<GameObject>();
     private float timer;
     private Vector3 mousePosition;
 
+    public bool hasMoney = false;
     public GameObject SceneLoader;
     public float moreArmDistance = 0.1f;
     public GameObject armPiece;
     public float snapbackAccuracyDist = 0.5f;
     public float snapbackSpeed = 0.1f;
     public float moveSpeed = 0.1f;
+    public Sprite reaching_hand;
+    public Sprite returning_hand;
 
     private void Start()
     {
@@ -32,14 +36,27 @@ public class Arm : MonoBehaviour
         //rather than bopping between scenes were just going to keep it all loaded and move the camera. 
         if (SceneLoader.GetComponent<SceneLoader>().InMainScene)
         {
-            if (Input.GetMouseButton(0))
+            if (!hasMoney)
             {
-                Stretch();
+                GetComponentInChildren<SpriteRenderer>().sprite = reaching_hand;
+                if (Input.GetMouseButton(0))
+                {
+                    Stretch();
+                }
+                else
+                {
+                    retractStartPos = transform.position;
+                    Retract();
+                }
             }
-            else
+
+            if (hasMoney)
             {
+                GetComponentInChildren<SpriteRenderer>().sprite = returning_hand;
+                retractStartPos = transform.position;
                 Retract();
             }
+
         }
     }
 
@@ -93,6 +110,14 @@ public class Arm : MonoBehaviour
                 timer = 0;
                 nextRetractPos = armPositions[armPositions.Count - 1];
             }
+
+            if(hasMoney && armPositions.Count == 1)
+            {
+                GetComponentInChildren<SpriteRenderer>().sprite = reaching_hand;
+                hasMoney = false;
+                //reduce debt amount by $10
+            }
+
         }
     }
 

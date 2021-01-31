@@ -7,6 +7,7 @@ public class ItemBoundry : MonoBehaviour
     public GameObject SceneLoader;
     public GameObject item;
     public GameObject hand;
+    public GameObject macroHand;
     private Vector3 startPos;
     // Start is called before the first frame update
     void Start()
@@ -20,10 +21,14 @@ public class ItemBoundry : MonoBehaviour
     {
         if (collision.gameObject.tag == "Item")
         {
+            //hand.GetComponentInChildren<SpriteRenderer>().sprite = hand.GetComponent<Hand>().Open_img;
+            item.transform.parent = null;
+            hand.GetComponent<Hand>().itemHeld = false;
             collision.transform.parent = null;
             //put the money back in place
             item.GetComponent<Rigidbody2D>().MovePosition(startPos);
             collision.transform.position = startPos;
+            macroHand.GetComponent<Arm>().hasMoney = true;
             //cut back to the main scene
             SceneLoader.GetComponent<SceneLoader>().CutBackToMainScene();
 

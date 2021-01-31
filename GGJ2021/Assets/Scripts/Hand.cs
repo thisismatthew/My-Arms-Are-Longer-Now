@@ -14,6 +14,8 @@ public class Hand : MonoBehaviour
     private Vector3 mousePosition;
     public float moveSpeed = 0.1f;
 
+    public Sprite Open_img { get => open_img; set => open_img = value; }
+
     void FixedUpdate()
     {
         if (!SceneLoader.GetComponent<SceneLoader>().InMainScene)
