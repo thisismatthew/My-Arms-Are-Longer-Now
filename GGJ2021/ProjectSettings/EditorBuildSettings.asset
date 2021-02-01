@@ -9,24 +9,24 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/TitleCard.unity
+    path: Assets/Scenes/GameJam Scenes/TitleCard.unity
     guid: 03e17706f52f1c0439085c15dcc2f33a
   - enabled: 1
-    path: Assets/Scenes/IntroOne.unity
+    path: Assets/Scenes/GameJam Scenes/IntroOne.unity
     guid: 5fa065e44af63214daa0323cf83cd7ef
   - enabled: 1
-    path: Assets/Scenes/IntroTwo.unity
+    path: Assets/Scenes/GameJam Scenes/IntroTwo.unity
     guid: 092aaf4fefea8084397b4e555c8f8c89
   - enabled: 1
-    path: Assets/Scenes/IntroThree.unity
+    path: Assets/Scenes/GameJam Scenes/IntroThree.unity
     guid: 6e045c1d562ed49499b275b4a903084a
   - enabled: 1
-    path: Assets/Scenes/Game.unity
+    path: Assets/Scenes/GameJam Scenes/Game.unity
     guid: 533f9601559ff3c4497c338efd8b4845
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
+    path: Assets/Scenes/GameJam Scenes/GameOver.unity
     guid: 8d9cf7dbde81fd54eba74b6af4f61e5b
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
+    path: Assets/Scenes/GameJam Scenes/Credits.unity
     guid: 5b4985aa5d4869d459eae7d7fbe6aa7f
   m_configObjects: {}
