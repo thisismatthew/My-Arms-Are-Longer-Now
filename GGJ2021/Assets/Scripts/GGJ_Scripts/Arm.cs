@@ -13,6 +13,7 @@ public class Arm : MonoBehaviour
     private float timer;
     private Vector3 mousePosition;
 
+
     public GameObject debt;
     public bool hasMoney = false;
     public GameObject SceneLoader;
@@ -39,6 +40,7 @@ public class Arm : MonoBehaviour
 
     void FixedUpdate()
     {
+        HandMatch();
         timer = Time.deltaTime * snapbackSpeed;
         //rather than bopping between scenes were just going to keep it all loaded and move the camera. 
         if (SceneLoader.GetComponent<SceneLoader>().InMainScene)
@@ -201,5 +203,23 @@ public class Arm : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void HandMatch()
+    {
+        if (armPieces.Count > 0)
+        {
+            //get Hand sprite
+            GameObject sprite = this.transform.GetChild(0).gameObject;
+            //get last armpiece sprite
+            GameObject lastArmSprite = armPieces[armPieces.Count - 1].transform.GetChild(0).gameObject;
+
+            Vector3 spritePos = sprite.transform.localPosition;
+            Vector3 lastArmSpritePos = lastArmSprite.transform.localPosition;
+
+            //set them to be the same on the y axis. 
+            spritePos.y = lastArmSpritePos.y;
+            sprite.transform.localPosition = spritePos;
+        }
     }
 }
