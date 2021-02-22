@@ -27,6 +27,7 @@ public class Arm : MonoBehaviour
 
     private bool stretching = false;
     private bool retracting = false;
+    private bool forceRetract = false;
 
 
 
@@ -40,6 +41,21 @@ public class Arm : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Metaball arm pieces cant be above 450 or the renderer will give up 
+        // check to make sure they are under the limit, if they are, retract. 
+        if(armPieces.Count >= 450)
+        {
+            if (!retracting)
+            {
+                FindObjectOfType<AudioManager>().Play("retract");
+                retracting = true;
+                stretching = false;
+                forceRetract = true;
+            }
+            retractStartPos = transform.position;
+            Retract();
+        }
+
         HandMatch();
         timer = Time.deltaTime * snapbackSpeed;
         //rather than bopping between scenes were just going to keep it all loaded and move the camera. 
@@ -48,7 +64,7 @@ public class Arm : MonoBehaviour
             if (!hasMoney)
             {
                 GetComponentInChildren<SpriteRenderer>().sprite = reaching_hand;
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButton(0) && !forceRetract)
                 {
                     if (!stretching)
                     {
@@ -152,6 +168,7 @@ public class Arm : MonoBehaviour
 
             if (armPositions.Count == 1 && retracting)
             {
+                forceRetract = false;
                 retracting = false;
                 FindObjectOfType<AudioManager>().Stop("stretch");
                 FindObjectOfType<AudioManager>().Stop("retract");
